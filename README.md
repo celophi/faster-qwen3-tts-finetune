@@ -3,6 +3,24 @@ This fork includes finetuning scripts and changes for **Qwen3-TTS-12Hz-0.6B-Base
 I specifically created this because I found a lack of information on how to finetune 0.6B correctly, and the original Qwen3-TTS repo only includes an example for 1.7B.
 Additionally, this repo will include some debugging scripts which can be useful during finetuning without needing to use a full-on tensorboard.
 
+## Fork Install
+```bash
+python -m venv .venv
+.\.venv\Scripts\activate
+python.exe -m pip install --upgrade pip
+```
+
+On Windows for flash attention to work, I've had to do this:
+```bash
+pip uninstall torch torchaudio flash_attn -y
+pip install torch==2.11.0 torchaudio --index-url https://download.pytorch.org/whl/cu130
+pip install "https://huggingface.co/ussoewwin/Flash-Attention-2_for_Windows/resolve/main/flash_attn-2.9.0%2Bcu130torch2.11.0cxx11abiTRUE-cp313-cp313-win_amd64.whl"
+```
+
+Install remaining dependencies
+```bash
+pip install -e .
+```
 
 # Faster Qwen3-TTS
 
